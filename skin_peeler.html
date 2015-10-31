@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<title>换肤</title>
+		<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+		
+		<style type="text/css">
+			*{margin: 0;padding: 0;}
+			li{list-style:none;}
+			.top_nav{width:100%;height:50px;line-height:50px;border-bottom:1px solid #ccc;text-decoration:underline;color:#000;}
+			.top_nav ul{float:left;margin-left:10%;width: 60%;}
+			.top_nav ul li{margin-left:1%;width:10%;float:left;}
+			.top_nav .div{float:right;}
+			.skin{margin:auto;width:80%;height:300px;display:none;}
+
+			.colour,.cartoon,.scenery {display:none;}
+			.colour ul li,.cartoon ul li,.scenery ul li{margin: 0.35%;position:relative;float:left;width:9%;height:100px;border:1px solid #ccc;}
+			.colour ul li p,.cartoon ul li p,.scenery ul li p{position:absolute;top:100px;  width: 100%;text-align:center;}
+			.colour ul li:first-child{background:#000;}
+			.colour ul li:nth-child(2){background:#fff;}
+			.colour ul li:nth-child(3){background:blue;}
+			.colour ul li:nth-child(4){background:red;}
+			.colour ul li:nth-child(5){background:orange;}
+			.colour ul li:nth-child(6){background:pink;}
+			.colour ul li:nth-child(7){background:green;}
+			.colour ul li:nth-child(8){background:gray;}
+			.colour ul li:nth-child(9){background:yellow;}
+			.colour ul li:nth-child(10){background:purple;}
+			
+			.scenery ul li:first-child{background:url(1.jpg)no-repeat;background-size:100% 100%;}
+			.scenery ul li:nth-child(2){background:url(2.jpg)no-repeat;background-size:100% 100%;}
+			.scenery ul li:nth-child(3){background:url(3.jpg)no-repeat;background-size:100% 100%;}
+			
+			
+			.cartoon ul li:first-child{background:url(1.jpg)no-repeat;background-size:100% 100%;}
+			.cartoon ul li:nth-child(2){background:url(2.jpg)no-repeat;background-size:100% 100%;}
+			.cartoon ul li:nth-child(3){background:url(3.jpg)no-repeat;background-size:100% 100%;}
+			.cartoon ul li:nth-child(4){background:url(1.jpg)no-repeat;background-size:100% 100%;}
+			.cartoon ul li:nth-child(5){background:url(2.jpg)no-repeat;background-size:100% 100%;}
+			
+			
+			.skin_peeler{display:block;width: 100%;height: 50px;line-height: 50px;padding-left: 20%;background-color: #000;color: #fff;text-decoration:underline;}
+			#s_skin{width:100%;height:700px;background:#fff;}
+		</style>
+	</head>
+	<body>
+	<div class="skin">
+	<div class="top_nav" >
+	<ul class="nav_skin">
+	<li class="nav_s" id="nav_1" data-url="1">色调</li>
+	<li class="nav_s" id="nav_2" data-url="2">风景</li>
+	<li class="nav_s" id="nav_3" data-url="3">动漫</li>
+	</ul>
+	<div class="up">收起</div>
+	</div>
+	
+
+	<div class="colour" id="con_1" style="display:block;" >
+		<ul>
+			<li id="skin_1" data-u="1"><p>black</p></li>
+			<li id="skin_2" data-u="2"><p>white</p></li>
+			<li id="skin_3" data-u="3"><p>blue</p></li>
+			<li id="skin_4" data-u="4"><p>red</p></li>
+			<li id="skin_5" data-u="5"><p>orange</p></li>
+			<li id="skin_6" data-u="6"><p>pink</p></li>			
+			<li id="skin_7" data-u="7"><p>green</p></li>
+			<li id="skin_8" data-u="8"><p>gray</p></li>
+			<li id="skin_9" data-u="9"><p>yellow</p></li>
+			<li id="skin_10" data-u="10"><p>purple</p></li>
+		</ul>
+	</div>
+	<div class="scenery colour" id="con_2" >
+		<ul>
+			<li id="skin_11" data-u="11"><p>图片来源于网络</p></li>
+			<li id="skin_12" data-u="12"><p>图片来源于网络</p></li>
+			<li id="skin_13" data-u="13"><p>图片来源于网络</p></li>
+			
+		</ul>
+	</div>
+	<div class="cartoon colour" id="con_3" >
+		<ul>
+			<li id="skin_14" data-u="14"><p>图片来源于网络</p></li>
+			<li id="skin_15" data-u="15"><p>图片来源于网络</p></li>
+			<li id="skin_16" data-u="16"><p>图片来源于网络</p></li>
+			<li id="skin_17" data-u="17"><p>图片来源于网络</p></li>
+			<li id="skin_18" data-u="18"><p>图片来源于网络</p></li>
+
+		</ul>
+	</div>
+	</div>
+
+	<div class="skin_peeler out" >
+		换肤
+	</div>
+	<div class="selected_skin" id="s_skin">asdsdsf</div>
+	<!--  打开皮肤的组件 -->
+		<script type="text/javascript">
+		var skin_peeler=document.getElementsByClassName("skin_peeler")
+		var skin=document.getElementsByClassName("skin")
+		var up=document.getElementsByClassName("up")
+
+		skin_peeler[0].onclick=function(){
+			skin[0].style.display="block";
+			skin_peeler[0].style.display="none";
+			}
+		up[0].onclick=function(){
+			skin[0].style.display="none";
+			skin_peeler[0].style.display="block";
+			}
+		</script>
+	<!-- 皮肤类别的组件 -->
+		<script type="text/javascript">
+		/*var num_key = document.getElementsByClassName('colour');
+		foreach(num_key in key){
+			key.onclick =function(){
+				
+			}
+		}*/
+		for(var i = 1; i<4;i++){
+		var key = 'nav_'+i;
+		var num_key = document.getElementById(key);
+		
+			num_key.onclick = function(){
+			
+			for(var a = 1; a<4;a++){
+			var com = 'con_'+a;
+			document.getElementById(com).style.display = 'none';
+			
+			var k = this.getAttribute('data-url');
+			var con = 'con_'+k;
+			document.getElementById(con).style.display = 'block';
+			}
+			
+			}	
+
+		}
+		
+		/*var nav_s=document.getElementsByClassName("nav_s")
+
+		var scenery=document.getElementsByClassName("scenery")
+		var cartoon=document.getElementsByClassName("cartoon")
+		var colour=document.getElementsByClassName("colour")
+		
+		nav_s[0].onclick=function(){
+			colour[0].style.display="block";
+			scenery[0].style.display="none";
+			cartoon[0].style.display="none";
+			}
+		nav_s[1].onclick=function(){
+			colour[0].style.display="none";
+			scenery[0].style.display="block";
+			cartoon[0].style.display="none";
+			}
+		nav_s[2].onclick=function(){
+			colour[0].style.display="none";
+			scenery[0].style.display="none";
+			cartoon[0].style.display="block";
+			}*/
+		</script>		
+	<!-- 具体皮肤的组件 -->
+	
+	<script type="text/javascript">
+	for(var b = 1; b<19;b++){
+		var skin1 = 'skin_'+b;
+		var number_skin = document.getElementById(skin1);		
+						
+				number_skin.onclick = function(){
+				var d = this.getAttribute('data-url');
+				var e=window.getComputedStyle(d , null)['background'];	
+				window.getComputedStyle(skin_1 , null)['background']; = e;
+			}			
+
+			}	
+	</script>
+	</body>
+
+</html>
