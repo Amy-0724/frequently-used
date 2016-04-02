@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title> 轮播图 </title>
+		<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+		
+	</head>
+	<body>
+		<style type="text/css">
+			* {margin: 0; padding: 0;border: 0;}
+			.banner {position: relative;}
+			#banner {margin: auto;width: 320px;}
+			#banner ul {width: 100%;}
+			#banner ul li {position: absolute;width: 100%;}
+			#banner ul li p{position: relative;top: -100px;left: 50px;}
+			.on {display: block;}
+			.hidd {display: none;}
+			.banner-arrow {position: absolute;top: 0;height: 50px;width: 50px;    margin-top: 60px;}
+			.prev {left: 0px;}
+			.next {right: 0px;}
+			.next img {padding-left: 30px;}
+		</style>
+	<!-- 把要轮播的地方写上来 -->
+<div class="banner" id="banner">
+    <ul class="behind">
+        <li class="" data-val ="0"><img src="banner_3.gif" alt="" width="320" height="200" ><p>111111111111</p></li>
+        <li class="hidd" data-val ="1"><img src="banner1.png" alt="" width="320" height="200" ><p>22222222222</p></li>
+        <li class="hidd" data-val ="2"><img src="banner_3.gif" alt="" width="320" height="200" ><p>33333333333</p></li>
+        <li class="hidd" data-val ="3"><img src="banner1.png" alt="" width="320" height="200" ><p>444444444444</p></li>
+    </ul>
+    <a href="javascript:void(0);" class="banner-arrow prev"><img class="arrow" id="al" src="arrowl.png" alt="prev" width="20" height="35"></a>
+    <a href="javascript:void(0);" class="banner-arrow next"><img class="arrow" id="ar" src="arrowr.png" alt="next" width="20" height="35"></a>
+</div>
+
+<!-- 最后用js控制 -->
+<script type="text/javascript">
+//点击按钮,触发切换图片事件
+
+$(".banner-arrow").click(updthisimg);
+//切换图片事件
+function updthisimg(){
+	var key = $("#banner ul li:not(.hidd)").attr("data-val");
+	if(3 == key ){		
+		$("#banner ul li").eq(key).addClass("hidd");
+		key= parseInt(key) + 1;
+		key = 0;		
+		$("#banner ul li").eq(key).removeClass("hidd");
+	}else{
+		$("#banner ul li").eq(key).addClass("hidd");
+		key= parseInt(key) + 1;
+	//console.log(key);
+		$("#banner ul li").eq(key).removeClass("hidd");	
+	}
+}
+//循环显示切换图片事件
+setInterval("updthisimg()",2000);
+
+//鼠标悬停时,图片暂停切换	
+
+
+
+	$("#banner ul li").mouseover(function(){
+		timer = setInterval("updthisimg()",2000);
+		 clearInterval(timer);
+});
+
+</script>
+
+
+</body>
+</html>
