@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html> <!-- author:Amy E-mail:502307217@qq.com -->
 <html>
 	<head>
 		<meta charset="utf-8" />
@@ -33,12 +33,12 @@
     <a href="javascript:void(0);" class="banner-arrow next"><img class="arrow" id="ar" src="arrowr.png" alt="next" width="20" height="35"></a>
 </div>
 
-<!-- 最后用js控制 -->
+<!-- 最后用js控制 --><!-- author:Amy E-mail:502307217@qq.com -->
 <script type="text/javascript">
 //点击按钮,触发切换图片事件
 
 $(".banner-arrow").click(updthisimg);
-//切换图片事件
+//点击切换图片事件
 function updthisimg(){
 	var key = $("#banner ul li:not(.hidd)").attr("data-val");
 	if(3 == key ){		
@@ -55,15 +55,6 @@ function updthisimg(){
 }
 //循环显示切换图片事件
 setInterval("updthisimg()",2000);
-
-//鼠标悬停时,图片暂停切换	
-
-
-
-	$("#banner ul li").mouseover(function(){
-		timer = setInterval("updthisimg()",2000);
-		 clearInterval(timer);
-});
 
 </script>
 
